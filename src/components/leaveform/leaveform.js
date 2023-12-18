@@ -31,7 +31,7 @@ const LeaveForm = ({ onLeaveSubmit }) => {
             window.alert('Leave submitted successfully');
           } else {
             console.error("Failed to submit leave");
-            window.alert('Leave not submitted');
+            window.alert('Leave not submitted due to no error in data');
 
         }
      }
