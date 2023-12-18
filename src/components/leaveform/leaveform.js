@@ -13,6 +13,8 @@ const LeaveForm = ({ onLeaveSubmit }) => {
 
       const handleSubmit = async (e) => {
       e.preventDefault();
+       try
+        {
          {
           const response = await fetch(`http://localhost:5000/leave/${id}`, {
             method: "POST",
@@ -29,9 +31,15 @@ const LeaveForm = ({ onLeaveSubmit }) => {
             window.alert('Leave submitted successfully');
           } else {
             console.error("Failed to submit leave");
+            window.alert('Leave not submitted');
 
         }
      }
+    }catch (error) {
+      // Handle network errors
+      console.error("Network error:", error.message);
+      window.alert('Leave not submitted due to same data present in database');
+    }
 
   };
   return (
