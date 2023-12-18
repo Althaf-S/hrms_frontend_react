@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import { useParams } from 'react-router-dom';
-import EmployeeDetails from "../employeedetails/employeedetails";
 
 const LeaveForm = ({ onLeaveSubmit }) => {
     const { id } = useParams();
@@ -15,7 +14,6 @@ const LeaveForm = ({ onLeaveSubmit }) => {
       e.preventDefault();
        try
         {
-         {
           const response = await fetch(`http://localhost:5000/leave/${id}`, {
             method: "POST",
             headers: {
@@ -31,10 +29,9 @@ const LeaveForm = ({ onLeaveSubmit }) => {
             window.alert('Leave submitted successfully');
           } else {
             console.error("Failed to submit leave");
-            window.alert('Leave not submitted due to no error in data');
-
+            window.alert('Leave not submitted because either data present in database or leaves taken exceeds maximum leaves');
+            setLeaveData({ date: '', reason: '' });
         }
-     }
     }catch (error) {
       // Handle network errors
       console.error("Network error:", error.message);
