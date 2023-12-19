@@ -5,7 +5,8 @@ import About from './components/about/about'
 import Header from './components/header/header'
 import EmployeeDetails from './components/employeedetails/employeedetails';
 import LeaveForm from './components/leaveform/leaveform';
-import { Route,Routes } from 'react-router-dom';
+import Error from './components/error/error';
+import { Route,Routes,Navigate } from 'react-router-dom';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/employees/:id" element={<EmployeeDetails />}>
           <Route path="addingleaves" element={<LeaveForm />} />
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

@@ -2,26 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Employee from '../employee/employee';
 import LeaveForm from '../leaveform/leaveform';
+import ErrorPage from '../errorpage/errorpage';
 
 export default function EmployeeDetails() {
   const { id } = useParams();
   const [employeedetails, setEmployeedetails] = useState([]);
   const [updateEmployeeDetails, setUpdateEmployeeDetails] = useState(false);
-
-
-  const emplistStyle = {
-    height: '750px',
-    overflowY: 'scroll',
-  };
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:5000/employees/${id}`)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
       .then(dataemp => {
         setEmployeedetails(dataemp);
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch(error => {
+        setError(error.message);
+        console.error('Error fetching data:', error);
+      });
   }, [id,updateEmployeeDetails]);
+  
+  if (error) {
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
+  }
 
   const handleUpdateEmployeeDetails = () => {
     setUpdateEmployeeDetails(prevState => !prevState);
