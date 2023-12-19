@@ -50,7 +50,7 @@ export default function EmployeeDetails() {
             </p>
             <p>
               <h1>Leave details</h1>
-              <strong>Leaves taken:</strong> {dataemp.leaves} <br/> <strong>Maximum leaves: </strong>{dataemp.max_leaves}
+              <strong>Leaves taken:</strong> {dataemp.leaves} <br/> <strong>Maximum leaves: </strong>{dataemp.max_leaves} <br/> <strong>Leaves left to be taken : </strong> {dataemp.leaves_left}
             </p>
             <LeaveForm onLeaveSubmit={handleUpdateEmployeeDetails} />
           </div>

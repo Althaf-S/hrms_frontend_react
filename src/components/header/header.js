@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom"
+import './header.css'
 
 export default function Navbar(){
     return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success" style={{ backgroundColor: '##006400' }}>
   <div className="container-fluid">
   <NavLink to={'/'} className="navbar-brand">HRMS</NavLink>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +12,7 @@ export default function Navbar(){
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-        <NavLink to={'/employees'} className="navbar-brand">Employees</NavLink>
+        <NavLink to={'/employees'} className="navbar-brand" >Employees</NavLink>
         </li>
         <li className = "nav-item">
         <NavLink to={'/about'}className="navbar-brand">About</NavLink>

@@ -1,0 +1,9 @@
+/* .selected-link {
+    color: #ff0000;
+  } */
+
+  #linkcolor:focus,
+  #linkcolor:hover{
+    color:initial;
+    background-color: rgb(15, 159, 191);
+  }

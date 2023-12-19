@@ -10,6 +10,15 @@ const LeaveForm = ({ onLeaveSubmit }) => {
         setLeaveData({...leaveData, [name]: value });
       };
 
+      const buttonStyle = {
+        display: 'inline-block',
+        backgroundColor: '#006400',
+        padding: '15px',
+        width: '200px',
+        color: '#ffffff',
+        textAlign: 'center',
+      };
+
       const handleSubmit = async (e) => {
       e.preventDefault();
        try
@@ -29,11 +38,10 @@ const LeaveForm = ({ onLeaveSubmit }) => {
             window.alert('Leave submitted successfully');
           } else {
             console.error("Failed to submit leave");
-            window.alert('Leave not submitted because either data present in database or leaves taken exceeds maximum leaves');
+            window.alert('Check your entry for any mistakes');
             setLeaveData({ date: '', reason: '' });
         }
     }catch (error) {
-      // Handle network errors
       console.error("Network error:", error.message);
       window.alert('Leave not submitted due to same data present in database');
     }
@@ -43,7 +51,7 @@ const LeaveForm = ({ onLeaveSubmit }) => {
     <form onSubmit={handleSubmit}>
         <h1>Leave submission form</h1>
       <label>
-      Leave date:
+      <strong>Leave date:</strong>
       <input
         type="date"
          name="date"
@@ -52,14 +60,16 @@ const LeaveForm = ({ onLeaveSubmit }) => {
       />
       </label>
       <label>
-        Reason:
+        <strong>Reason:</strong>
         <textarea
           name="reason"
           value={leaveData.reason}
           onChange={handleInputChange}
         />
       </label>
-      <button type="submit">Submit Leave</button>
+      <br/>
+      <br/>
+      <button style={buttonStyle} type="submit">Submit Leave</button>
     </form>
   );
 };

@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './employee.css'
 
 export default function Employee(){
 
@@ -8,7 +9,12 @@ export default function Employee(){
         height: '770px', 
         overflowY: 'scroll', 
       };
-    useEffect((props) => {
+
+      const linkStyle = {
+        color: '#006400',
+      };
+    
+    useEffect(() => {
         fetch('http://localhost:5000/employees')
           .then(response => response.json())
           .then(data => {setEmployee(data) 
@@ -21,9 +27,9 @@ export default function Employee(){
             <div style={emplistStyle}>
               {employee.map((data => 
                 <p>
-                  <Link to={`/employees/${data.id}`} className="navbar-brand">
+                  <NavLink to={`/employees/${data.id}`} className="navbar-brand" style={linkStyle}>
                            {data.firstname} {data.lastname}
-                  </Link>
+                  </NavLink>
 
                 </p>
               ))}
