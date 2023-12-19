@@ -11,6 +11,10 @@
             
 # EXECUTION
 
+- If the code is not working after cloning repository then you need to 'create-react-app <name-of-app>' to start a react app and then run this code from that folder.
+
+- To start application you need to type npm start on terminal from the folder in which you added 'create-react-app <name-of-app>', before that you need to install certain libraries and all those are needed libraries are added in requirement.txt in pulic folder.
+
 - This website have 3 pages
  
 - 1. Home page where you can see the basic details of webpage
