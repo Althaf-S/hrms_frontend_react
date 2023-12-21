@@ -10,6 +10,11 @@ export default function EmployeeDetails() {
   const [updateEmployeeDetails, setUpdateEmployeeDetails] = useState(false);
   const [error, setError] = useState(null);
 
+  const detailsStyle = {
+    height: '770px', 
+    overflowY: 'scroll', 
+  };
+
   useEffect(() => {
     fetch(`http://localhost:5000/employees/${id}`)
       .then(response => {
@@ -47,7 +52,7 @@ export default function EmployeeDetails() {
           <Employee />
         </div>
       </div>
-      <div className="col-9">
+      <div className="col-4" style={detailsStyle}>
         {employeedetails.map(dataemp => (
           <div>
             <h1>Details of {dataemp.firstname} {dataemp.lastname}</h1>
@@ -63,10 +68,18 @@ export default function EmployeeDetails() {
             <p>
               <h1>Leave details</h1>
               <strong>Leaves taken:</strong> {dataemp.leaves} <br/> <strong>Maximum leaves: </strong>{dataemp.max_leaves} <br/> <strong>Leaves left to be taken : </strong> {dataemp.leaves_left}
+              <br/><br/> <h1>Leave record</h1> {Array.isArray(dataemp.leave_data) &&
+    dataemp.leave_data.map((entry, index) => (
+      <div key={index}>{entry[0]}</div>
+    ))}
             </p>
-            <LeaveForm onLeaveSubmit={handleUpdateEmployeeDetails} />
           </div>
         ))}
+      </div>
+      <div className='col-5'>
+        <div>
+         <LeaveForm onLeaveSubmit={handleUpdateEmployeeDetails} />
+        </div>
       </div>
     </div>
   </div>
