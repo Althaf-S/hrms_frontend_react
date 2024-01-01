@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 const LeaveForm = ({ onLeaveSubmit }) => {
     const { id } = useParams();
     const [leaveData, setLeaveData] = useState({date: '',reason: '',});
-    console.log(id)
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setLeaveData({...leaveData, [name]: value });
@@ -32,17 +31,14 @@ const LeaveForm = ({ onLeaveSubmit }) => {
           });
 
           if (response.ok) {
-            console.log("Leave submitted successfully");
             onLeaveSubmit();
             setLeaveData({ date: '', reason: '' });
             window.alert('Leave submitted successfully');
           } else {
-            console.error("Failed to submit leave");
             window.alert('Check your entry for any mistakes');
             setLeaveData({ date: '', reason: '' });
         }
     }catch (error) {
-      console.error("Network error:", error.message);
       window.alert('Leave not submitted due to same data present in database');
     }
 

@@ -28,7 +28,6 @@ export default function EmployeeDetails() {
       })
       .catch(error => {
         setError(error.message);
-        console.error('Error fetching data:', error);
       });
   }, [id,updateEmployeeDetails]);
   
