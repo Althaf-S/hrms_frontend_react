@@ -18,9 +18,9 @@ export default function EmployeeDetails() {
   useEffect(() => {
     fetch(`http://localhost:5000/employees/${id}`)
       .then(response => {
-        if (!response.ok) {
-          throw new Error();
-        }
+        //if (!response.ok) {
+          //throw new Error();
+        //}
         return response.json();
       })
       .then(dataemp => {
@@ -40,7 +40,7 @@ export default function EmployeeDetails() {
   }
 
   const handleUpdateEmployeeDetails = () => {
-    setUpdateEmployeeDetails(prevState => !prevState);
+  setUpdateEmployeeDetails(prevState => !prevState);
   };
 
   return (
